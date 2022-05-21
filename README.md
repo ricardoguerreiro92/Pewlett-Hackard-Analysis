@@ -3,6 +3,9 @@
 ## Overview of Analysis
 - The purpose of this project is to prepare Pewlett-Hackard company for the "silver tsunami" the company is about to face with many employees getting to the age of retirement. In this project we created a database with all company employees info and their title within the company to better understand how many people are eligible for retirement and how many of those hold a management position. We will also create a mentorship eligibility based on the employees date of birth to check for employees who are currently eligible to mentor new employees in the positions that will needed to be filled.
 
+## Relational Database Image
+![imagedb](EmployeesDB.png)
+
 ## Result of Analysis
 - There are four major points we retrieved from the two analysis performed:
 
