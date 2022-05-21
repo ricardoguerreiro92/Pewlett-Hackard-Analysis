@@ -41,3 +41,33 @@ AND (t.to_date = '9999-01-01')
 ORDER BY e.emp_no ASC;
 
 SELECT * FROM mentorship_eligibility;
+
+
+-- EXTRA QUERIES FOR ANALYSIS PURPOSES
+
+-- Creates mentorship_eligibility2 for a widen search for mentors - employees born between 1963 and 1965
+SELECT DISTINCT ON(e.emp_no) e.emp_no, e.first_name, e.last_name, e.birth_date,
+de.from_date, de.to_date, t.title
+INTO mentorship_eligibility2
+FROM employees AS e
+INNER JOIN dept_emp AS DE
+ON (e.emp_no = de.emp_no)
+INNER JOIN titles AS t
+ON (e.emp_no = t.emp_no)
+WHERE (e.birth_date BETWEEN '1963-01-01' AND '1965-12-31')
+AND (t.to_date = '9999-01-01')
+ORDER BY e.emp_no ASC;
+
+-- Creates a table with a count of the number of mentors per title who were born solely in 1965
+SELECT COUNT(me.title) count_title, me.title
+INTO mentors
+FROM mentorship_eligibility AS me
+GROUP BY me.title
+ORDER BY count_title ASC;
+
+-- Creates a table with a count of the number of mentors per title who were born between 1963 and 1965
+SELECT COUNT(me.title) count_title, me.title
+INTO mentors_updated
+FROM mentorship_eligibility2 AS me
+GROUP BY me.title
+ORDER BY count_title ASC;
