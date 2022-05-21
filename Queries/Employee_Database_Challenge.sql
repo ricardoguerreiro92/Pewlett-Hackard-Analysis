@@ -10,7 +10,6 @@ ORDER BY e.emp_no;
 SELECT * FROM retirement_titles;
 
 --Creates unique_titles table with employees eligible for retirement who are currently hired
---Creates unique_titles table with employees eligible for retirement who are currently hired
 SELECT DISTINCT ON(rt.emp_no) rt.emp_no, rt.first_name, rt.last_name, rt.title
 INTO unique_titles
 FROM retirement_titles AS rt
